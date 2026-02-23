@@ -1,0 +1,53 @@
+dotnet sln list
+
+dotnet dev-certs https -h
+dotnet dev-certs https --check
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust -v
+
+ in (Sql Server) "ConnectionStrings": {
+    "DefaultConnection": "Server=MyEquipo\\SQL2022;Database=datingdb;TrustServerCertificate=True;Trusted_Connection=true;MultipleActiveResultSets=true"
+   },
+
+npm install -g @angular/cli@20
+ng add (package_file)
+
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+
+dotnet restore
+
+dotnet tool list -g
+dotnet tool install -g dotnet-ef
+
+dotnet ef migrations add InitialCreate -o Data/Migrations
+
+dotnet ef database drop
+dotnet ef database update
+
+dotnet new gitignore
+
+git checkout main
+git pull origin nullable
+
+choco install mkcert
+mkcert -install
+mkdir ssl
+cd ssl
+mkcert localhost
+//in angular.json add at section
+   "serve": {
+      "options": {
+         "ssl": true,
+         "sslCert": "./ssl/localhost.pem",
+         "sslKey": "./ssl/localhost-key.pem"
+      },
+
+docker compose up -d
+
+dotnet publish -c Release -o ./bin/Publish
+
+
+
+
+
