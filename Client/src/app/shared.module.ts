@@ -1,4 +1,4 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule, JsonPipe } from "@angular/common";
 import { NgModule, Type } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
@@ -22,6 +22,7 @@ const sharable: Type<any>[] = [
    RouterModule,
    ReactiveFormsModule,
    ColorNamePipe,
+   JsonPipe,
    MatProgressSpinnerModule
 ]
 

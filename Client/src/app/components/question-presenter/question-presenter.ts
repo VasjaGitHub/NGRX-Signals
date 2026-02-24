@@ -1,6 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { Question } from '../../models/question.model';
+import { Component, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared.module';
+import { QuizStore } from '../../store/quiz.store';
 
 @Component({
    selector: 'app-question-presenter',
@@ -9,9 +9,6 @@ import { SharedModule } from '../../shared.module';
    styleUrl: './question-presenter.css',
 })
 export class QuestionPresenter {
-   readonly question = signal<Question>({
-      caption: ['Red', 'Green'],
-      answers: ['Red', 'Green', 'Blue', 'Yellow'],
-      correctIndex: 3
-   });
-}
+   readonly store = inject(QuizStore);
+   readonly question = this.store.currentQuestion;
+};
