@@ -50,7 +50,6 @@ body {
 
 .green-theme {
    @include theme.go(mat.$m2-green-palette, pal.$accent, true);
-
 }
 
 p.firebase-emulator-warning {

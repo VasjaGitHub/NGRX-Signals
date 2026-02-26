@@ -1,12 +1,15 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { SharedModule } from './shared.module';
+import { ItemsList } from "./components/items-list/items-list";
+import { Cart } from "./components/cart/cart";
+import { Toolbar } from "./components/toolbar/toolbar";
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+   selector: 'app-root',
+   imports: [SharedModule, Toolbar, ItemsList, Cart],
+   templateUrl: './app.html',
+   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('signals-shop');
+   readonly isCartShowing = signal<boolean>(true);
 }
