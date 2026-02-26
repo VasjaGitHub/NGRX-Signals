@@ -13,5 +13,6 @@ import { QuizStore } from './store/quiz.store';
    styleUrl: './app.css'
 })
 export class App {
+   readonly store = inject(QuizStore);
    title = 'ngrx-quiz';
 }
