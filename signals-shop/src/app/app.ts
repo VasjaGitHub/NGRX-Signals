@@ -1,8 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { SharedModule } from './shared.module';
+import { Toolbar } from "./components/toolbar/toolbar";
 import { ItemsList } from "./components/items-list/items-list";
 import { Cart } from "./components/cart/cart";
-import { Toolbar } from "./components/toolbar/toolbar";
+import { ShopStore } from './store/shop.store';
 
 @Component({
    selector: 'app-root',
@@ -11,5 +12,5 @@ import { Toolbar } from "./components/toolbar/toolbar";
    styleUrl: './app.scss'
 })
 export class App {
-   readonly isCartShowing = signal<boolean>(true);
+   readonly store = inject(ShopStore);
 }

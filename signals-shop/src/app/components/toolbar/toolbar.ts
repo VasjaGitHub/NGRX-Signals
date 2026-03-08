@@ -1,18 +1,19 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { SharedModule } from '../../shared.module';
+import { ShopStore } from '../../store/shop.store';
 
 @Component({
    selector: 'app-toolbar',
    imports: [SharedModule],
    templateUrl: './toolbar.html',
    styleUrl: './toolbar.scss',
-   // host: {
-   //    '(keydown.enter)': 'onEnter()'
-   // }
+   host: {
+      '(keydown.enter)': 'onEnter()'
+   }
 })
 export class Toolbar {
-   readonly searchValue = signal('');
-
-   readonly cartCount = signal(2);
-   readonly cartActive = computed(() => this.cartCount() > 0);
+   onEnter() {
+      throw new Error('Method not implemented.');
+   }
+   readonly store = inject(ShopStore);
 }
