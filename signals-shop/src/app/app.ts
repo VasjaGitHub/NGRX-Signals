@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SharedModule } from './shared.module';
 import { Toolbar } from "./components/toolbar/toolbar";
 import { ItemsList } from "./components/items-list/items-list";

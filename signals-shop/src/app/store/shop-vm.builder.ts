@@ -16,7 +16,7 @@ export function buildProductListVm(
       const word = searchWord
          .trim()
          .toLowerCase();
-      
+
       // if (!word) return [];
 
       return products

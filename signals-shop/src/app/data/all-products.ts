@@ -7,7 +7,7 @@ export const ALL_PRODUCTS: Product[] =
          "name": "Signal Booster",
          "description": "Boost your app's signals for improved reach and performance. Ensures strong and reliable updates for seamless user experiences, even during large-scale state transitions.",
          "unitPrice": 49.99,
-         "ranking": 4
+         "ranking": 5
       },
       {
          "id": "reactive-refresher",

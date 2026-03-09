@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SharedModule } from '../../shared.module';
 import { ShopStore } from '../../store/shop.store';
 

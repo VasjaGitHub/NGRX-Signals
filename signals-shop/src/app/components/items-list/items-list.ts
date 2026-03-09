@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ItemCard } from "../item-card/item-card";
 import { ShopStore } from '../../store/shop.store';
 
