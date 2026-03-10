@@ -1,4 +1,4 @@
-import { Question } from "../models/question.model";
+import { Question } from "../../../models/question.model";
 
 export function getCorrectCount(answers: number[], question: Question[]): number {
    let res = 0;

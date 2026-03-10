@@ -5,9 +5,11 @@ import { SharedModule } from '../../shared.module';
    selector: 'app-toolbar',
    imports: [SharedModule],
    templateUrl: './toolbar.html',
-   styleUrl: './toolbar.css',
+   styleUrl: './toolbar.scss'
 })
 export class Toolbar {
    readonly caption = input.required<string>();
-   readonly icon = input('');
+
+   readonly icon = input<string>('');
+
 }

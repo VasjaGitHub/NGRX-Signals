@@ -1,12 +1,12 @@
 import { Component, computed, inject } from '@angular/core';
-import { SharedModule } from '../../shared.module';
+import { SharedModule } from '../../../../shared.module';
 import { QuizStore } from '../../store/quiz.store';
 
 @Component({
    selector: 'app-done',
    imports: [SharedModule],
    templateUrl: './done.html',
-   styleUrl: './done.css',
+   styleUrl: './done.scss',
 })
 export class Done {
    readonly store = inject(QuizStore);
