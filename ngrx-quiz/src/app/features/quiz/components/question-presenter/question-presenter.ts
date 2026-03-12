@@ -10,5 +10,4 @@ import { QuizStore } from '../../store/quiz.store';
 })
 export class QuestionPresenter {
    readonly store = inject(QuizStore);
-   readonly question = this.store.currentQuestion;
 };

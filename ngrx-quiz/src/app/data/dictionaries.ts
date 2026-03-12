@@ -302,7 +302,7 @@ export const SPANISH_DICTIONARY: Dictionary = {
    "WhiteSmoke": "Humo Blanco",
    "Yellow": "Amarillo",
    "YellowGreen": "Amarillo Verde",
-   "QuestionCaption": "Pregunta: ¿Qué obtienes cuando agregas?"
+   "QuestionCaption": "Pregunta: ¿Qué obtienes cuando agregas"
 }
 
 export const DICTIONARIES: Record<string, Dictionary> = {

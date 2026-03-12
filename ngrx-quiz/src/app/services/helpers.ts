@@ -53,7 +53,6 @@ export function addRgb(...rgbs: RGB[]): RGB {
    return res;
 }
 
-
 export function randomColorQuestion() {
    const twoOrThree = randomNumber(2, 3, true);
    const colors = randomItems([...KNOWN_COLORS], twoOrThree) as [KEYWORD, KEYWORD] | [KEYWORD, KEYWORD, KEYWORD];

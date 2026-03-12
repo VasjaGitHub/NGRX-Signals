@@ -11,5 +11,4 @@ export class Toolbar {
    readonly caption = input.required<string>();
 
    readonly icon = input<string>('');
-
 }

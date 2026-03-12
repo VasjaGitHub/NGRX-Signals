@@ -3,10 +3,10 @@ import { Question } from "../../../models/question.model";
 
 export interface QuizSlice {
    readonly questions: Question[];
-   readonly answears: number[];
+   readonly answers: number[];
 }
 
 export const initialQuizSlice: QuizSlice = {
    questions: QUESTIONS,
-   answears:[]
+   answers:[]
 }
