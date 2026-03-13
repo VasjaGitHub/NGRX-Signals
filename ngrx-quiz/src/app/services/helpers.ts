@@ -53,6 +53,7 @@ export function addRgb(...rgbs: RGB[]): RGB {
    return res;
 }
 
+
 export function randomColorQuestion() {
    const twoOrThree = randomNumber(2, 3, true);
    const colors = randomItems([...KNOWN_COLORS], twoOrThree) as [KEYWORD, KEYWORD] | [KEYWORD, KEYWORD, KEYWORD];
@@ -119,7 +120,8 @@ export function getColorDisplayNameMap() {
       "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow",
       "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle",
       "Tomato", "Turquoise", "Violet", "Wheat", "White",
-      "WhiteSmoke", "Yellow", "YellowGreen"
+      "WhiteSmoke", "Yellow", "YellowGreen",
+      "Question: What do you get when you add"
    ];
 
    return Object.fromEntries(htmlColors.map(clr => [clr.toLowerCase(), splitCamelCase(clr)]));

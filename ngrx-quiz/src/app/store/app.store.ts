@@ -1,35 +1,33 @@
-import { patchState, signalStore, withComputed, withHooks, withMethods, withState } from "@ngrx/signals";
+import { patchState, signalStore, withComputed, withHooks, withMethods, withProps, withState } from "@ngrx/signals";
 import { initialAppSlice } from "./app.slice";
-import { DICTIONARIES_TOKEN } from "../tokens/dictionaries.token";
 import { computed, inject } from "@angular/core";
-import { changeLanguage } from "./app.updaters";
+import { DICTIONARIES_TOKEN } from "../tokens/dictionaries.token";
+import { changeLanguage, resetLanguages } from "./app.updaters";
 import { getDictionary } from "./app.helpers";
 
 export const AppStore = signalStore(
    { providedIn: 'root' },
    withState(initialAppSlice),
-   withComputed(store => {
-      const dictionaries = inject(DICTIONARIES_TOKEN);
+   withProps((_store) => {
+      const _dictionaries = inject(DICTIONARIES_TOKEN);
+      const _languages = Object.keys(_dictionaries);
+
       return {
-         selectedDictionary: computed(() =>
-            getDictionary(store.selectedLanguage(), dictionaries))
+         _dictionaries, _languages
       }
    }),
-   withMethods(store => {
-      const dictionaries = inject(DICTIONARIES_TOKEN);
-      const languages = Object.keys(dictionaries);
-      return {
-         changeLanguage: () => patchState(store, changeLanguage(languages))
-      }
-   }),
-   withHooks(store => ({
+   withComputed((_store) => ({
+      selectedDictionary: computed(() =>
+         getDictionary(_store.selectedLanguage(), _store._dictionaries)),
+   })),
+   withMethods(_store => ({
+      changeLanguage: () => patchState(_store, changeLanguage(_store._languages)),
+      _resetLanguages: () => patchState(_store, resetLanguages(_store._languages))
+   }
+   )),
+   withHooks(_store => ({
       onInit: () => {
-         const dictionaries = inject(DICTIONARIES_TOKEN);
-         const languages = Object.keys(dictionaries);
-         patchState(store, {
-            possibleLanguages: languages,
-            selectedLanguage: languages[0]
-         })
+         _store._resetLanguages();
       }
    }))
 )

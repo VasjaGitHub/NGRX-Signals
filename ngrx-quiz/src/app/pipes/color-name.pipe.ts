@@ -5,7 +5,6 @@ import { displayNameOfColor } from '../services/helpers';
    name: 'colorName',
    standalone: true
 })
-
 export class ColorNamePipe implements PipeTransform {
    transform(value: string): string {
       return displayNameOfColor(value);

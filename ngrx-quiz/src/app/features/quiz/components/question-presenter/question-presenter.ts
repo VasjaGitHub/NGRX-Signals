@@ -9,5 +9,5 @@ import { QuizStore } from '../../store/quiz.store';
    styleUrl: './question-presenter.scss',
 })
 export class QuestionPresenter {
-   readonly store = inject(QuizStore);
+   readonly q_store = inject(QuizStore);
 };

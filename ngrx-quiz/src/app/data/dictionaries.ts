@@ -153,6 +153,7 @@ export const ENGLISH_DICTIONARY: Dictionary = {
    "YellowGreen": "Yellow Green",
    "QuestionCaption": "Question: What do you get when you add"
 }
+
 export const SPANISH_DICTIONARY: Dictionary = {
    "AliceBlue": "Azul Alice",
    "AntiqueWhite": "Blanco Antiguo",
