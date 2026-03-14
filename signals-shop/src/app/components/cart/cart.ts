@@ -1,5 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
-import { CartItemVm } from './view-model/cart-item.vm';
+import { Component, inject } from '@angular/core';
 import { CartItem } from "./components/cart-item/cart-item";
 import { SharedModule } from '../../shared.module';
 import { ShopStore } from '../../store/shop.store';

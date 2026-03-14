@@ -15,7 +15,7 @@ import { AppStore } from '../../store/app.store';
    styleUrl: './quiz.scss',
    //providers: [QuizStore]
 })
-export default class QuizPageComponent {
+export default class QuizPage {
    readonly appStore = inject(AppStore);
    readonly store = inject(QuizStore);
 }

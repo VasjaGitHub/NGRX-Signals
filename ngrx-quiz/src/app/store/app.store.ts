@@ -22,12 +22,12 @@ export const AppStore = signalStore(
    })),
    withMethods(store => ({
       changeLanguage: () => patchState(store, changeLanguage(store._languages)),
-      resetLanguages: () => patchState(store, resetLanguages(store._languages))
+      _resetLanguages: () => patchState(store, resetLanguages(store._languages))
    }
    )),
    withHooks(store => ({
       onInit: () => {
-         store.resetLanguages();
+         store._resetLanguages();
       }
    }))
 )
