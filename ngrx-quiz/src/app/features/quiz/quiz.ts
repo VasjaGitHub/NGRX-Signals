@@ -13,6 +13,7 @@ import { AppStore } from '../../store/app.store';
    imports: [SharedModule, QuestionPresenter, Toolbar, Progress, Done, Flag],
    templateUrl: './quiz.html',
    styleUrl: './quiz.scss',
+   //providers: [QuizStore]
 })
 export default class QuizPageComponent {
    readonly appStore = inject(AppStore);

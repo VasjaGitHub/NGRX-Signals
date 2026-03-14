@@ -8,7 +8,7 @@ export function addAnswer(index: number): PartialStateUpdater<QuizSlice> {
 }
 
 export function resetQuiz(): PartialStateUpdater<QuizSlice> {
-   return _ => ({
+   return () => ({
       answers: []
    })
 }

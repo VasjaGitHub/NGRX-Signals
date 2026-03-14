@@ -8,7 +8,7 @@ import { getDictionary } from "./app.helpers";
 export const AppStore = signalStore(
    { providedIn: 'root' },
    withState(initialAppSlice),
-   withProps((_store) => {
+   withProps(() => {
       const _dictionaries = inject(DICTIONARIES_TOKEN);
       const _languages = Object.keys(_dictionaries);
 
@@ -16,18 +16,18 @@ export const AppStore = signalStore(
          _dictionaries, _languages
       }
    }),
-   withComputed((_store) => ({
+   withComputed((store) => ({
       selectedDictionary: computed(() =>
-         getDictionary(_store.selectedLanguage(), _store._dictionaries)),
+         getDictionary(store.selectedLanguage(), store._dictionaries))
    })),
-   withMethods(_store => ({
-      changeLanguage: () => patchState(_store, changeLanguage(_store._languages)),
-      _resetLanguages: () => patchState(_store, resetLanguages(_store._languages))
+   withMethods(store => ({
+      changeLanguage: () => patchState(store, changeLanguage(store._languages)),
+      resetLanguages: () => patchState(store, resetLanguages(store._languages))
    }
    )),
-   withHooks(_store => ({
+   withHooks(store => ({
       onInit: () => {
-         _store._resetLanguages();
+         store.resetLanguages();
       }
    }))
 )

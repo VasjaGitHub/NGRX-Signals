@@ -11,7 +11,7 @@ export function changeLanguage(languages: string[]): PartialStateUpdater<AppSlic
 }
 
 export function resetLanguages(languages: string[]): PartialStateUpdater<AppSlice> {
-   return _ => ({
+   return () => ({
       possibleLanguages: languages,
       selectedLanguage: languages[0]
    })
