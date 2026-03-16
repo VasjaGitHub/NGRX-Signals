@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { SharedModule } from './shared.module';
 import { Toolbar } from "./components/toolbar/toolbar";
-import { ItemsList } from "./components/items-list/items-list";
-import { Cart } from "./components/cart/cart";
 import { ShopStore } from './store/shop.store';
+import { Cart } from './features/cart/cart';
+import { ProductList } from './features/product-list/product-list';
 
 @Component({
    selector: 'app-root',
-   imports: [SharedModule, Toolbar, ItemsList, Cart],
+   imports: [SharedModule, Toolbar, Cart, ProductList],
    templateUrl: './app.html',
    styleUrl: './app.scss'
 })

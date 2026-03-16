@@ -1,14 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { CartItem } from "./components/cart-item/cart-item";
+import { CartItem } from './components/cart-item/cart-item';
 import { SharedModule } from '../../shared.module';
-import { ShopStore } from '../../store/shop.store';
+import { CartStore } from './store/cart.store';
 
 @Component({
    selector: 'app-cart',
    imports: [SharedModule, CartItem],
    templateUrl: './cart.html',
-   styleUrl: './cart.scss'
+   styleUrl: './cart.scss',
+   providers: [CartStore]
 })
 export class Cart {
-   readonly store = inject(ShopStore);
+   readonly store = inject(CartStore);
 }

@@ -15,5 +15,6 @@ export class Toolbar {
    onEnter() {
       throw new Error('Method not implemented.');
    }
+   
    readonly store = inject(ShopStore);
 }

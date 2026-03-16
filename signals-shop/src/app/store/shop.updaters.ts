@@ -4,6 +4,7 @@ import { ShopSlice } from "./shop.slice";
 export function setSearchWord(searchWord: string): PartialStateUpdater<ShopSlice> {
    return () => ({ searchWord })
 }
+
 export function addToCart(productId: string): PartialStateUpdater<ShopSlice> {
    return state => {
       const cartQuantities = { ...state.cartQuantities };
@@ -11,15 +12,19 @@ export function addToCart(productId: string): PartialStateUpdater<ShopSlice> {
       return { cartQuantities };
    }
 }
+
 export function viewCart(): PartialStateUpdater<ShopSlice> {
    return () => ({ cartVisible: true })
 }
+
 export function hideCart(): PartialStateUpdater<ShopSlice> {
    return () => ({ cartVisible: false })
 }
+
 export function incrementQuantity(productId: string): PartialStateUpdater<ShopSlice> {
    return addToCart(productId);
 }
+
 export function decrementQuantity(productId: string): PartialStateUpdater<ShopSlice> {
    return state => {
       const cartQuantities = { ...state.cartQuantities };
@@ -28,6 +33,7 @@ export function decrementQuantity(productId: string): PartialStateUpdater<ShopSl
       return { cartQuantities };
    }
 }
+
 export function checkoutCart(): PartialStateUpdater<ShopSlice> {
    return () => ({
       cartQuantities: {},

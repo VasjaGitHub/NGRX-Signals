@@ -7,16 +7,17 @@ import { MatIconModule } from "@angular/material/icon";
 import { RouterModule } from "@angular/router";
 
 const modules = [
-    CommonModule, 
-    FormsModule,
-    RouterModule,
-    MatButtonModule,
-    MatIconModule,
-    MatBadgeModule
+   CommonModule,
+   FormsModule,
+   RouterModule,
+   MatButtonModule,
+   MatIconModule,
+   MatBadgeModule
 ];
 
 @NgModule({
-    imports: modules,
-    exports: modules    
+   imports: modules,
+   exports: modules
 })
-export class SharedModule {}
+
+export class SharedModule { }

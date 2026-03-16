@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core';
-import { SharedModule } from '../../shared.module';
+import { SharedModule } from '../../../../shared.module';
 
 @Component({
    selector: 'app-ranking',
@@ -9,5 +9,6 @@ import { SharedModule } from '../../shared.module';
 })
 export class Ranking {
    readonly value = input.required<number>();
+
    readonly filled = computed(() => [1, 2, 3, 4, 5].map(i => i <= this.value()));
 }
