@@ -2,14 +2,16 @@ import { ShopVm } from "./shop.vm";
 import { CartQuantities } from "../models/cart-quantities.model";
 
 export function buildShopVm(
-   cartVisible: boolean,
-   cartQuantities: CartQuantities
+   cartQuantities: CartQuantities,
+   cartVisible: boolean
 ): ShopVm {
-   const itemsCount = Object.entries(cartQuantities).length;
+   const cartItemsCount = Object.entries(cartQuantities).length;
+   const isCartActive = cartItemsCount > 0;
+   const isCartVisible = cartVisible && isCartActive;
 
    return {
-        isCartActive: itemsCount > 0,
-        isCartVisible: cartVisible,
-        cartItemsCount: itemsCount
+      cartItemsCount,
+      isCartActive,
+      isCartVisible
    }
 }

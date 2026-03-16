@@ -1,32 +1,27 @@
+import { CartQuantities } from "../../../models/cart-quantities.model";
 import { Product } from "../../../models/product.model";
 import { CartItemVm } from "../view-model/cart-item.vm";
 import { CartVm } from "../view-model/cart.vm";
 
 export function buildCartVm(
    products: Product[],
-   quantities: Record<string, number>,
-   taxRate: number,
-   cartVisible: boolean
+   quantities: CartQuantities,
+   taxRate: number
 ): CartVm {
    const items = buildCartItems();
    const subtotal = items.reduce((sum, item) => sum + item.total, 0);
    const tax = subtotal * taxRate;
    const total = subtotal + tax;
    const itemsCount = items.length;
-   const isActive = itemsCount > 0;
-   const isVisible = cartVisible;
-   const canCheckout = isActive;
 
    return {
       items,
       subtotal,
       tax,
       total,
-      itemsCount,
-      isActive,
-      isVisible,
-      canCheckout
+      itemsCount
    }
+
    function buildCartItems(): CartItemVm[] {
       return products
          .filter(product => quantities[product.id])

@@ -28,8 +28,13 @@ export function incrementQuantity(productId: string): PartialStateUpdater<ShopSl
 export function decrementQuantity(productId: string): PartialStateUpdater<ShopSlice> {
    return state => {
       const cartQuantities = { ...state.cartQuantities };
-      cartQuantities[productId] > 0 ? cartQuantities[productId] -= 1
-         : delete cartQuantities[productId];
+      const newQuantity = cartQuantities[productId] - 1;
+      if (newQuantity > 0) {
+         cartQuantities[productId] = newQuantity;
+      } else {
+         delete cartQuantities[productId];
+      }
+
       return { cartQuantities };
    }
 }

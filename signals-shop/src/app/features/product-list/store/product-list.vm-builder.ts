@@ -1,10 +1,11 @@
+import { CartQuantities } from "../../../models/cart-quantities.model";
 import { Product } from "../../../models/product.model";
 import { ProductListVm } from "../view-model/product-list.vm";
 
 export function buildProductListVm(
    products: Product[],
    searchWord: string,
-   quantities: Record<string, number>
+   quantities: CartQuantities
 ): ProductListVm {
 
    return {

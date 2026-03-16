@@ -14,6 +14,5 @@ export class ProductCart {
    readonly store = inject(ProductListStore);
    readonly product = input.required<ProductItemVm>();
    readonly image = computed(() => `images/${this.product().id}.png`);
-
    readonly isInCart = computed(() => this.product().quantity > 0);
 }

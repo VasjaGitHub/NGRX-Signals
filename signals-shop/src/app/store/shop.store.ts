@@ -8,8 +8,8 @@ export const ShopStore = signalStore(
    withState(initialShopSlice),
    withComputed(store => ({
       vm: computed(() => buildShopVm(
-         store.cartVisible(),
-         store.cartQuantities()
+         store.cartQuantities(),
+         store.cartVisible()
       ))
    })),
    withMethods(store => ({

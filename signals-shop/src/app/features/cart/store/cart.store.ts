@@ -13,8 +13,7 @@ export const CartStore = signalStore(
       vm: computed(() => buildCartVm(
          store._shopStore.products(),
          store._shopStore.cartQuantities(),
-         store.taxRate(),
-         store._shopStore.cartVisible()
+         store.taxRate()
       ))
    })),
    withMethods(store => ({
