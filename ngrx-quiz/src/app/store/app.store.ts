@@ -1,33 +1,51 @@
-import { patchState, signalStore, withComputed, withHooks, withMethods, withProps, withState } from "@ngrx/signals";
-import { initialAppSlice } from "./app.slice";
-import { computed, inject } from "@angular/core";
-import { DICTIONARIES_TOKEN } from "../tokens/dictionaries.token";
-import { changeLanguage, resetLanguages } from "./app.updaters";
-import { getDictionary } from "./app.helpers";
+import { patchState, signalStore, withHooks, withMethods, withProps, withState, } from '@ngrx/signals';
+import { rxMethod } from '@ngrx/signals/rxjs-interop';
+import { initialAppSlice } from './app.slice';
+import { inject } from '@angular/core';
+import { tapResponse } from '@ngrx/operators';
+import { changeLanguage, resetLanguages, setBusy, setDictionary, } from './app.updaters';
+import { DictionariesService } from '../services/dictionaries.service';
+import { map, switchMap, tap } from 'rxjs';
+import { ColorQuizGeneratorService } from '../services/color-quiz-generator.service';
+import { NotificationsService } from '../services/notifications.service';
 
 export const AppStore = signalStore(
    { providedIn: 'root' },
    withState(initialAppSlice),
    withProps(() => {
-      const _dictionaries = inject(DICTIONARIES_TOKEN);
-      const _languages = Object.keys(_dictionaries);
+      const _dictionariesService = inject(DictionariesService);
+      const _languages = _dictionariesService.languages;
 
       return {
-         _dictionaries, _languages
-      }
+         _dictionariesService,
+         _languages,
+         _quizGeneratorService: inject(ColorQuizGeneratorService),
+         _notifications: inject(NotificationsService),
+      };
    }),
-   withComputed((store) => ({
-      selectedDictionary: computed(() =>
-         getDictionary(store.selectedLanguage(), store._dictionaries))
-   })),
-   withMethods(store => ({
-      changeLanguage: () => patchState(store, changeLanguage(store._languages)),
-      _resetLanguages: () => patchState(store, resetLanguages(store._languages))
-   }
-   )),
-   withHooks(store => ({
+   withMethods((store) => {
+      const _invalidateDictionary = rxMethod<string>(input$ => input$.pipe(
+         tap(() => patchState(store, setBusy(true))),
+         switchMap(lang => store._dictionariesService
+            .getDictionaryWithDelay(lang).pipe(
+               tapResponse({
+                  next: dict => patchState(store, setDictionary(dict)),
+                  error: err => store._notifications.error(`${err}`),
+                  finalize: () => patchState(store, setBusy(false))
+               })
+            ))
+      ));
+
+      _invalidateDictionary(store.selectedLanguage);
+
+      return {
+         changeLanguage: () => patchState(store, changeLanguage(store._languages)),
+         _resetLanguages: () => patchState(store, resetLanguages(store._languages))
+      };
+   }),
+   withHooks((store) => ({
       onInit: () => {
          store._resetLanguages();
-      }
+      },
    }))
-)
+);

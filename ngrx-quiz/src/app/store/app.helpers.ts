@@ -9,16 +9,18 @@ export function getDictionary(language: string, dictionaries: Dictionaries): Dic
    return lowerCaseDict;
 }
 
-export function translate(key: string, dictionary: Dictionary): string {
+export function translate(key: string, dictionary: Dictionary | null): string {
    key = key.trim().toLowerCase();
+   if (!dictionary) return key;
+
    return dictionary[key] ?? key;
 }
 
-export function translateToPair(key: string, dictionary: Dictionary): { key: string, name: string } {
+export function translateToPair(key: string, dictionary: Dictionary | null): { key: string, name: string } {
    key = key.trim().toLowerCase();
    return { key, name: translate(key, dictionary) };
 }
 
-export function translateToPairs(keys: string[], dictionary: Dictionary): { key: string, name: string }[] {
+export function translateToPairs(keys: string[], dictionary: Dictionary | null): { key: string, name: string }[] {
    return keys.map(key => translateToPair(key, dictionary));
 }
