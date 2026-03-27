@@ -79,7 +79,7 @@ export function randomColorQuestion() {
 export function randomColorQuiz() {
    return Array.from({
       length: randomNumber(6, 20),
-   }).map(_ => randomColorQuestion());
+   }).map(() => randomColorQuestion());
 }
 
 function splitCamelCase(str: string) {
